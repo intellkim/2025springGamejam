@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 715657689267263617}
   - component: {fileID: 5682295572403830457}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Enemy10
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,10 +362,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1738dd90e929e44786ac30c230af4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
   maxHealth: 100
   healthBar: {fileID: 6391406328851303688}
+  pocketMoneyValue: 10
   player: {fileID: 0}
+  normalSprite: {fileID: 0}
+  skullSprite: {fileID: -3560852360957142242, guid: 4231b0f10f06a7244ad9bacdbf75f26f, type: 3}
+  soulRestSprite: {fileID: -3777184159844669818, guid: ac89024b75d17bc4aa6400db5b9f07e1, type: 3}
 --- !u!1 &8125602462704723882
 GameObject:
   m_ObjectHideFlags: 0

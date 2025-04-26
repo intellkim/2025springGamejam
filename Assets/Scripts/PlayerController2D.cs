@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController2D : MonoBehaviour
 {   
+    public GameObject grimReaperPrefab; // 소환할 저승사자 프리팹
+    private bool grimReaperSpawned = false;
     public float moveSpeed = 5f;
     public float checkDistance = 1.5f;
     public Animator animator;
     public LayerMask enemyLayer;
     private Vector2 lastMoveDir = Vector2.down;
-
+    public TextMeshProUGUI pocketMoneyText;
     public int bowCount = 0;
     public int killCount = 0;
+    public int pocketMoney = 0;
 
     void Update()
     {
@@ -67,10 +71,17 @@ public class PlayerController2D : MonoBehaviour
         Debug.Log("😈 싸가지 엔딩: 넙죽 깡패 🩸");
         SceneManager.LoadScene("SsggEndingScene");
     }
-    public void RegisterHit()
+    public void RegisterHit(int money)
     {
         bowCount++;
-        Debug.Log($"절이 맞았음! 현재 절 카운트: {bowCount}");
+        pocketMoney += money;
+        UpdatePocketMoneyUI();
+        Debug.Log($"절이 맞았음! 현재 절 카운트: {bowCount}, 세뱃돈: {pocketMoney}만원");
+
+        if (!grimReaperSpawned && bowCount >= 5)
+        {
+            SpawnGrimReaper();
+        }
 
         if (bowCount >= 10 && killCount == 0)
         {
@@ -81,5 +92,25 @@ public class PlayerController2D : MonoBehaviour
     {
         Debug.Log("🌸 극락왕생 엔딩 🌸");
         SceneManager.LoadScene("HeavenEndingScene");
+    }
+    void UpdatePocketMoneyUI()
+    {
+        if (pocketMoneyText != null)
+        {
+            pocketMoneyText.text = $"세뱃돈: {pocketMoney}만원";
+        }
+    }
+    void SpawnGrimReaper()
+    {
+        grimReaperSpawned = true;
+        Instantiate(grimReaperPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+        Debug.Log("👻 저승사자 등장!!");
+    }
+
+    Vector2 GetRandomSpawnPosition()
+    {
+        float x = Random.Range(-10f, 10f);
+        float y = Random.Range(-6f, 6f);
+        return new Vector2(x, y);
     }
 }
