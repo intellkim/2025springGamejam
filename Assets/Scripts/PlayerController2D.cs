@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController2D : MonoBehaviour
-{
+{   
+    public float moveSpeed = 5f;
     public float checkDistance = 1.5f;
     public Animator animator;
     public LayerMask enemyLayer;
@@ -13,7 +14,16 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
-        // 방향키 입력
+        Move();
+        // 절하기
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            animator?.SetTrigger("Bow"); // 애니메이션 있으면 실행
+            TryBowHit();
+        }
+    }
+    void Move()
+    {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         Vector2 moveDir = new Vector2(x, y);
@@ -21,13 +31,7 @@ public class PlayerController2D : MonoBehaviour
         if (moveDir != Vector2.zero)
         {
             lastMoveDir = moveDir.normalized;
-        }
-
-        // 절하기
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            animator?.SetTrigger("Bow"); // 애니메이션 있으면 실행
-            TryBowHit();
+            transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
         }
     }
 
@@ -68,7 +72,7 @@ public class PlayerController2D : MonoBehaviour
         bowCount++;
         Debug.Log($"절이 맞았음! 현재 절 카운트: {bowCount}");
 
-        if (bowCount >= 108 && killCount == 0)
+        if (bowCount >= 10 && killCount == 0)
         {
             TriggerHeavenEnding();
         }

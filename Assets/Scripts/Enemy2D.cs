@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class Enemy2D : MonoBehaviour
-{
+{   
+    public float moveSpeed = 2f;
     public int maxHealth = 100;
     private int currentHealth;
     public HealthBar healthBar;
@@ -12,6 +13,14 @@ public class Enemy2D : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+    }
+    void Update()
+    {
+        transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        if (transform.position.x < -10f)  // 이 값은 화면 크기에 따라 조정 가능
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void TakeBowDamage()
