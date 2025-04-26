@@ -21,7 +21,7 @@ public class PlayerController2D : MonoBehaviour
         Move();
         // 절하기
         if (Input.GetKeyDown(KeyCode.Z))
-        {
+        {   
             animator?.SetTrigger("Bow"); // 애니메이션 있으면 실행
             TryBowHit();
         }
@@ -34,8 +34,21 @@ public class PlayerController2D : MonoBehaviour
 
         if (moveDir != Vector2.zero)
         {
+            animator?.SetBool("IsWalking", true);
             lastMoveDir = moveDir.normalized;
+            
+            if (moveDir.x > 0)
+                GetComponent<SpriteRenderer>().flipX = false; // 오른쪽
+            else if (moveDir.x < 0)
+                GetComponent<SpriteRenderer>().flipX = true;
+            
             transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
+            // ✅ 추가: 이동할 때 걷는 애니메이션 켜기
+        }
+        else
+        {
+            // ✅ 추가: 멈출 때 걷기 끄고 Idle로 전환
+            animator?.SetBool("IsWalking", false);
         }
     }
 

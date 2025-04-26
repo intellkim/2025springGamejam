@@ -41,7 +41,7 @@ public class Enemy2D : MonoBehaviour
         currentHealth -= 50;
         Debug.Log($"적이 절을 맞음! 현재 체력: {currentHealth}");
         healthBar.SetHealth(currentHealth);
-        if (isDead)
+        if (isDead && currentHealth == 0)
         {
             // 해골 상태라면 성불시킴
             SoulRest();
@@ -63,7 +63,8 @@ public class Enemy2D : MonoBehaviour
 
         isDead = true;
         if (spriteRenderer != null && skullSprite != null)
-        {
+        {   
+            GetComponent<Animator>().enabled = false;
             spriteRenderer.sprite = skullSprite; // 해골 이미지로 교체
         }
         // 움직임 멈추기

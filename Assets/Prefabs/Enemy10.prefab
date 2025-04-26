@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 4862763031210735884}
   - component: {fileID: 715657689267263617}
   - component: {fileID: 5682295572403830457}
+  - component: {fileID: -5513027002075842822}
   m_Layer: 6
   m_Name: Enemy10
   m_TagString: Enemy
@@ -293,7 +294,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -8721985527148427861, guid: 804322edad9c62d439c0c87d59897067, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -342,7 +343,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.605, y: 1.835}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -368,8 +369,30 @@ MonoBehaviour:
   pocketMoneyValue: 10
   player: {fileID: 0}
   normalSprite: {fileID: 0}
-  skullSprite: {fileID: -3560852360957142242, guid: 4231b0f10f06a7244ad9bacdbf75f26f, type: 3}
-  soulRestSprite: {fileID: -3777184159844669818, guid: ac89024b75d17bc4aa6400db5b9f07e1, type: 3}
+  skullSprite: {fileID: 8762902197776948120, guid: 8343e5e4443c653439017cd0210dfa6b, type: 3}
+  soulRestSprite: {fileID: 412737211496702206, guid: 44b33eba8dad6174082a710647dcec90, type: 3}
+--- !u!95 &-5513027002075842822
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677842583211625987}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8769e1bee9b565a47984416bf5a83d4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8125602462704723882
 GameObject:
   m_ObjectHideFlags: 0
