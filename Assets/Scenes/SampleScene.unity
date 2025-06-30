@@ -200,8 +200,8 @@ Transform:
   m_GameObject: {fileID: 291500583}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0429, y: -0.012, z: 0}
-  m_LocalScale: {x: 1.1086, y: 0.9263, z: 1}
+  m_LocalPosition: {x: -0.0301, y: -0.012, z: 0}
+  m_LocalScale: {x: 1.4282047, y: 0.93307436, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grimReaperPrefab: {fileID: 2560101666831940858, guid: 253970b4e817993438f0c0bec335b1db, type: 3}
   moveSpeed: 5
-  checkDistance: 2
+  checkDistance: 2.5
   animator: {fileID: 1789215224}
   enemyLayer:
     serializedVersion: 2

@@ -13,7 +13,7 @@ public class Enemy2D : MonoBehaviour
     public Sprite skullSprite;  // 해골 스프라이트
     public Sprite soulRestSprite;
     private SpriteRenderer spriteRenderer;
-
+    public bool isSoulResting = false;
     private Vector2 moveDirection;
     public void SetMoveDirectionTowards(Vector2 targetPosition)
     {
@@ -41,11 +41,14 @@ public class Enemy2D : MonoBehaviour
         currentHealth -= 50;
         Debug.Log($"적이 절을 맞음! 현재 체력: {currentHealth}");
         healthBar.SetHealth(currentHealth);
-        if (isDead && currentHealth == 0)
-        {
+        if (isDead)
+        {   if (isSoulResting)
+                return;
             // 해골 상태라면 성불시킴
-            SoulRest();
-            return;
+            if(currentHealth <= 0){
+                SoulRest();
+                return;
+            }
         }
         if (player != null)
         {
@@ -95,6 +98,7 @@ public class Enemy2D : MonoBehaviour
     void SoulRest()
     {
         Debug.Log("🌸 해골이 성불했습니다...");
+        isSoulResting = true;
     
         if (spriteRenderer != null && soulRestSprite != null)
         {

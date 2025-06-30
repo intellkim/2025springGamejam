@@ -55,7 +55,8 @@ public class PlayerController2D : MonoBehaviour
     void TryBowHit()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, lastMoveDir, checkDistance, enemyLayer);
-        Debug.DrawRay(transform.position, lastMoveDir * checkDistance, Color.red, 1f);
+        
+        Debug.DrawRay(transform.position, lastMoveDir * checkDistance, Color.red, 2f);
 
         if (hit.collider != null)
         {
